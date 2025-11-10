@@ -32,7 +32,6 @@ function HomePage() {
 </section>
 
 
-
 <section className="text-gray-600 body-font p-0">
   <div className="w-full flex px-5 py-0 mx-auto justify-center items-center flex-wrap gap-20">
     <div className="s1 w-40 h-40 bg-gray-300"></div>
@@ -44,7 +43,6 @@ function HomePage() {
     <div className="s1 w-40 h-40 bg-gray-300"></div>
   </div>
 </section>
-
 
 
 <section class="text-gray-600 body-font">
@@ -95,9 +93,6 @@ function HomePage() {
           <button class="inline-flex justify-center cursor-pointer mt-5 text-white bg-[#0570c4] border-0 py-2 w-full focus:outline-none hover:bg-[#05599f] rounded text-lg">View More</button>
         </div>
       </div>
-
-
-      
     </div>
   </div>
 </section>
@@ -177,7 +172,7 @@ function HomePage() {
       <p class="mb-8 leading-relaxed text-justify">
       Esyventra is a cutting-edge event management platform designed specifically for university societies and student organizations. Our mission is to simplify the process of organizing, promoting, and analyzing events on campus. With Esyventra, societies can effortlessly create event pages, manage registrations, and leverage AI-powered tools to generate engaging promotional content. Our platform not only saves time but also enhances event visibility and participation through intelligent marketing strategies. Join us in revolutionizing the way university events are managed and experienced!
       </p>
-     
+
       <div class="flex justify-center">
         <button class="inline-flex text-white bg-[#0570c4] border-0 py-2 px-10 focus:outline-none hover:bg-[#05599f] rounded text-lg">Sign in </button>
         

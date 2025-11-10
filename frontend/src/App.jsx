@@ -6,6 +6,7 @@ import HomePage from './pages/Home/HomePage'
 import Society from './pages/Society/Society'
 import './App.css'
 
+
 function App() {
   return (
   <>
