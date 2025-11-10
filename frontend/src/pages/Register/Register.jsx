@@ -119,17 +119,17 @@ export default function Register() {
 								/>
 							</div>
 
-							<div className="flex items-center justify-between mt-2">
+							<div className=" flex flex-row gap-10 items-center justify-between mt-2">
 								<button
 									type="submit"
-									className="bg-[#0570c4] text-white px-6 py-2 rounded-full text-sm shadow hover:bg-[#05599f] transition-colors"
+									className="bg-[#0570c4] flex-1 justify-center items-center w-40 text-white px-4 py-4 rounded-full text-sm shadow hover:bg-[#05599f] transition-colors"
 								>
-									Submit
+									Add Document
 								</button>
 
 								<div className=" text-gray-500 text-right">
-									<div className='text-sm font-semibold'>*Add three verification documents.</div>
-									<div className="text-xs italic mt-1">Society clarification letter/Organization Letter/Society President Letter.</div>
+									<div className='text-sm font-semibold'>*Add one verification documents.</div>
+									{/* <div className="text-xs italic mt-1">Society clarification letter/Organization Letter/Society President Letter.</div> */}
 								</div>
 							</div>
 
