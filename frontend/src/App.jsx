@@ -2,25 +2,19 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/Home/HomePage.jsx'
+import HomePage from './pages/Home/HomePage'
+import Society from './pages/Society/Society'
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/register" replace />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/society" element={<Society />} />
       </Routes>
     </Router>
-    <>
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-      </BrowserRouter>
-    </>
   )
 }
 
