@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <div class="flex-col">
 
-    <header class=" bg-gray-100 body-font">
+    <header class=" bg-[#3baaf5] body-font">
     <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center max-lg:flex-row max-lg:justify-between max-sm:flex-row  max-sm:justify-between max-sm:items-center ">
     
     <div class="tog-menu-container max-lg:block lg:hidden">
@@ -39,14 +39,14 @@ function Navbar() {
       <div className="bg-[#0570c4] w-10 h-10 text-white p-1 rounded-full">
                 <img src={Logo} alt="Esyventra Logo" className="w-full h-full" />
         </div>
-      <span class="text-[#0570c4] ml-3 text-xl font-bold">Esyventra</span>
+      <span class="text-white ml-3 text-xl font-bold">Esyventra</span>
     </a>
     <nav class="max-lg:hidden md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-      <a class="box-border mr-20 text-[#0570c4] font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer" >Home</a>
-      <a class="box-border mr-20 text-[#0570c4] font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">Event</a>
-      <a class="box-border mr-20 text-[#0570c4] font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">Society</a>
-      <a class="box-border mr-20 text-[#0570c4] font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">About</a>
-      <a class="box-border mr-20 text-[#0570c4] font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">Contact</a>
+      <a class="box-border mr-20 text-white font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer" >Home</a>
+      <a class="box-border mr-20 text-white font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">Event</a>
+      <a class="box-border mr-20 text-white font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">Society</a>
+      <a class="box-border mr-20 text-white font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">About</a>
+      <a class="box-border mr-20 text-white font-semibold transition-all duration-50 hover:text-[#05599f] hover:scale-105 cursor-pointer">Contact</a>
     </nav>
     <button class="inline-flex items-center bg-[#0570c4] border-0 py-2 px-4 focus:outline-none hover:bg-[#05599f] rounded text-base mt-4 md:mt-0 max-sm:mt-0 max-lg:mt-0 text-white font-semibold">Sign in
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">

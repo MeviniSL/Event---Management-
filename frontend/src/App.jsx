@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import HomePage from './pages/Home/HomePage'
@@ -8,15 +8,16 @@ import './App.css'
 
 function App() {
   return (
-    <Router>
+  <>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/society" element={<Society />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
+  </>
   )
 }
 
