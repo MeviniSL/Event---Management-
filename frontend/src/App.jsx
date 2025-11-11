@@ -1,14 +1,17 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import HomePage from './pages/Home/HomePage'
 import Society from './pages/Society/Society'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
+import './App.css'
 
-const App = () => {
+
+function App() {
   return (
-    <Router>
+  <>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
@@ -16,7 +19,8 @@ const App = () => {
         <Route path="/society" element={<Society />} />
          <Route path="/profile-details" element={<ProfileDetails />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
+  </>
   )
 }
 
