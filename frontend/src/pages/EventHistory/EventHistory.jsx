@@ -8,6 +8,7 @@ const EventHistory = () => {
     time: '10:00 AM - 4:00 PM'
   };
 
+
   const secondMockEvent = {
     name: 'Hackathon 2025',
     date: '2025-12-01',
@@ -58,5 +59,6 @@ const EventHistory = () => {
     </div>
   );
 };
+
 
 export default EventHistory
