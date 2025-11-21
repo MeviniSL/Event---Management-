@@ -5,7 +5,9 @@ import Login from './pages/Login/Login'
 import HomePage from './pages/Home/HomePage'
 import Society from './pages/Society/Society'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
+import EventHistory from './pages/EventHistory/EventHistory'
 import './App.css'
+
 
 
 function App() {
@@ -17,7 +19,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/society" element={<Society />} />
-         <Route path="/profile-details" element={<ProfileDetails />} />
+        <Route path="/profile-details" element={<ProfileDetails />} />
+        <Route path="/event-history" element={<EventHistory />} />
       </Routes>
     </BrowserRouter>
   </>
