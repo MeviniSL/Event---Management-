@@ -5,6 +5,7 @@ import Login from './pages/Login/Login'
 import HomePage from './pages/Home/HomePage'
 import Society from './pages/Society/Society'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
+import EventHistory from './pages/EventHistory/EventHistory'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/society" element={<Society />} />
          <Route path="/profile-details" element={<ProfileDetails />} />
+        <Route path="/event-history" element={<EventHistory />} />
       </Routes>
     </Router>
   )
