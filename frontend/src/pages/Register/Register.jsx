@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 export default function Register() {
 	const [form, setForm] = useState({
 		name: '',
-		organization: '',
+    indexNumber:'',
 		email: '',
 		contact: '',
 		password: '',
@@ -21,8 +21,9 @@ export default function Register() {
 	}
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-white">
-			<div className="w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden flex">
+		<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4" >
+			<div className="w-full max-w-6xl bg-white  rounded-lg overflow-hidden flex" style={{boxShadow:"0 0 20px #ccc"}}>
+
 				{/* Left teal panel */}
 				<div className="hidden md:flex md:w-1/2 bg-[#0570c4] from-teal-400 to-teal-500 text-white p-12 items-center justify-center">
 					<div className="max-w-md text-center">
@@ -51,25 +52,24 @@ export default function Register() {
 
 						<form onSubmit={handleSubmit} className="space-y-4">
 							<div>
-								<label className="sr-only">Society Name</label>
+								<label className="sr-only">Full Name</label>
 								<input
 									name="name"
 									value={form.name}
 									onChange={handleChange}
-									placeholder="Enter Society Name"
+									placeholder="Enter Full Name"
 									className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-teal-300"
 								/>
 							</div>
 
 							<div>
-								<label className="sr-only">Organization</label>
+								<label className="sr-only">Index Number</label>
 								<input
-									name="organization"
-									value={form.organization}
+									name="indexNumber"
+									value={form.indexNumber}
 									onChange={handleChange}
-									placeholder="Enter Society Organization"
-									className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-teal-300"
-								/>
+									placeholder="Enter Index Number"
+								<label className="sr-only">Organization</label>
 							</div>
 
 							<div>
@@ -117,20 +117,6 @@ export default function Register() {
 									placeholder="Confirm Password"
 									className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-teal-300"
 								/>
-							</div>
-
-							<div className=" flex flex-row gap-10 items-center justify-between mt-2">
-								<button
-									type="submit"
-									className="bg-[#0570c4] flex-1 justify-center items-center w-40 text-white px-4 py-4 rounded-full text-sm shadow hover:bg-[#05599f] transition-colors"
-								>
-									Add Document
-								</button>
-
-								<div className=" text-gray-500 text-right">
-									<div className='text-sm font-semibold'>*Add one verification documents.</div>
-									{/* <div className="text-xs italic mt-1">Society clarification letter/Organization Letter/Society President Letter.</div> */}
-								</div>
 							</div>
 
 							<div className="mt-6 text-center">

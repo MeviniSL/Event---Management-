@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 
 export default function Login() {
@@ -18,9 +17,8 @@ export default function Login() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-white">
-            <div className="w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden flex h-[600px]">
-              
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="w-full max-w-6xl bg-white rounded-lg overflow-hidden flex h-[600px] " style={{boxShadow:"0 0 20px #ccc"}}>
 
                 {/* Right form panel */}
                 <div className="w-full md:w-1/2 p-10 lg:p-16 bg-white">
