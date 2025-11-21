@@ -6,6 +6,8 @@ import HomePage from './pages/Home/HomePage'
 import Society from './pages/Society/Society'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import EventHistory from './pages/EventHistory/EventHistory'
+import AddEvent from './pages/Event/AddEvent'
+import EditEVent from './pages/Event/EditEVent'
 import './App.css'
 
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/society" element={<Society />} />
         <Route path="/profile-details" element={<ProfileDetails />} />
         <Route path="/event-history" element={<EventHistory />} />
+        <Route path="/add-event" element={<AddEvent />} />
+        <Route path="/edit-event" element={<EditEVent />} />
       </Routes>
     </BrowserRouter>
   </>
