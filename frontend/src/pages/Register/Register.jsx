@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react'
 
 export default function Register() {
 	const [form, setForm] = useState({
 		name: '',
+    indexNumber:'',
 		email: '',
 		contact: '',
 		password: '',
@@ -23,6 +23,7 @@ export default function Register() {
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4" >
 			<div className="w-full max-w-6xl bg-white  rounded-lg overflow-hidden flex" style={{boxShadow:"0 0 20px #ccc"}}>
+
 				{/* Left teal panel */}
 				<div className="hidden md:flex md:w-1/2 bg-[#0570c4] from-teal-400 to-teal-500 text-white p-12 items-center justify-center">
 					<div className="max-w-md text-center">
@@ -68,8 +69,7 @@ export default function Register() {
 									value={form.indexNumber}
 									onChange={handleChange}
 									placeholder="Enter Index Number"
-									className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-teal-300"
-								/>
+								<label className="sr-only">Organization</label>
 							</div>
 
 							<div>
