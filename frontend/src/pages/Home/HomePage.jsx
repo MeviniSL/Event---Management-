@@ -7,9 +7,11 @@ import { AGM, HomeHero, IEEELogo, ServiceBg } from '../../assets/assets'
 function HomePage() {
   return (
     <div class="w-full h-full m-0 p-0 bg-white overflow-x-hidden">
-      <Navbar/>
+       <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar />
+      </div>
 
-      <div className="flex-col justify-center items-center home-container h-full">
+      <div id="home" className="flex-col justify-center items-center home-container h-full mt-16">
       
       <section class="text-gray-600 body-font ">
   <div class="container mx-auto flex px-5 py-20 md:flex-row  flex-col items-center">
@@ -45,7 +47,7 @@ function HomePage() {
 </section>
 
 
-<section class="text-gray-600 body-font">
+<section id='event' class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
@@ -98,7 +100,7 @@ function HomePage() {
 </section>
 
 
-<section class="text-gray-600 body-font">
+<section id='society' class="text-gray-600 body-font">
   
   <div class="container px-5 py-15 mx-auto">
     <h1 class="title-font text-3xl font-bold text-gray-900 mb-12 text-center">Societies</h1>
@@ -160,7 +162,7 @@ function HomePage() {
   </div>
 </section>
 
-<section class="text-gray-600 body-font">
+<section id='about' class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <img class="object-cover h-full w-full object-center rounded" alt="hero" src={ServiceBg}/>
@@ -271,7 +273,7 @@ function HomePage() {
 </section>
 
 
-<section class="text-gray-600 body-font relative">
+<section id='contact' class="text-gray-600 body-font relative">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-12">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
