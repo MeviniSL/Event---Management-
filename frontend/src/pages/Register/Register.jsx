@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react'
+import UserService from '../../services/UserService'
 
 export default function Register() {
 	const [form, setForm] = useState({
 		name: '',
-    indexNumber:'',
+		indexNumber: '',
 		email: '',
 		contact: '',
 		password: '',
@@ -15,15 +17,39 @@ export default function Register() {
 	}
 
 	function handleSubmit(e) {
-		e.preventDefault()
-		console.log('submit', form)
-		alert('Form submitted (see console)')
+		 e.preventDefault()
+        
+        // Validate password match
+        if (form.password !== form.confirm) {
+            alert('Passwords do not match!')
+            return
+        }
+
+        // Map frontend field names to backend field names
+        const userData = {
+            index: form.indexNumber,  // Map indexNumber to index
+            name: form.name,
+            email: form.email,
+            contact: parseInt(form.contact),  // Convert to number
+            password: form.password
+        }
+
+        UserService.registerUser(userData)
+        .then((data) => {
+            console.log('Registration successful:', data)
+            alert('Registration successful!')
+            // Redirect to login page
+            window.location.href = '/login'
+        })
+        .catch((error) => {
+            console.error('Registration failed:', error)
+            alert('Registration failed: ' + (error.response?.data?.message || error.message))
+        })
 	}
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4" >
 			<div className="w-full max-w-6xl bg-white  rounded-lg overflow-hidden flex" style={{boxShadow:"0 0 20px #ccc"}}>
-
 				{/* Left teal panel */}
 				<div className="hidden md:flex md:w-1/2 bg-[#0570c4] from-teal-400 to-teal-500 text-white p-12 items-center justify-center">
 					<div className="max-w-md text-center">
@@ -69,7 +95,8 @@ export default function Register() {
 									value={form.indexNumber}
 									onChange={handleChange}
 									placeholder="Enter Index Number"
-								<label className="sr-only">Organization</label>
+									className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-teal-300"
+								/>
 							</div>
 
 							<div>
@@ -120,12 +147,12 @@ export default function Register() {
 							</div>
 
 							<div className="mt-6 text-center">
-												<a
-													href="/login"
+												<button
+													type="submit"
 													className="inline-block bg-[#0570c4] text-white px-10 py-3 rounded-full hover:bg-[#05599f] transition-colors"
 												>
-													Login
-												</a>
+													Register
+												</button>
 							</div>
 						</form>
 					</div>

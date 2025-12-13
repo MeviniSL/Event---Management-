@@ -8,6 +8,8 @@ import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import EventHistory from './pages/EventHistory/EventHistory'
 import AddEvent from './pages/Event/AddEvent'
 import EditEVent from './pages/Event/EditEVent'
+import AdminDashBoard from './pages/admin/AdminDashBoard'
+import ProtectedRoute from './components/config/ProtectedRoute'
 import './App.css'
 
 
@@ -20,11 +22,13 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/society" element={<Society />} />
-        <Route path="/profile-details" element={<ProfileDetails />} />
-        <Route path="/event-history" element={<EventHistory />} />
-        <Route path="/add-event" element={<AddEvent />} />
-        <Route path="/edit-event" element={<EditEVent />} />
+
+        <Route path="/society" element={<ProtectedRoute><Society /></ProtectedRoute>} />
+        <Route path="/profile-details" element={<ProtectedRoute><ProfileDetails /></ProtectedRoute>} />
+        <Route path="/event-history" element={<ProtectedRoute><EventHistory /></ProtectedRoute>} />
+        <Route path="/add-event" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
+        <Route path="/edit-event" element={<ProtectedRoute><EditEVent /></ProtectedRoute>} />
+        <Route path="/admin" element={<ProtectedRoute><AdminDashBoard /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   </>
