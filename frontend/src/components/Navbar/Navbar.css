@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.toggle-menu {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+    justify-content: center;
+  gap: 1rem;
+  display: none;
+}
+.toggle-menu-hide {
+    display: none;
+}
