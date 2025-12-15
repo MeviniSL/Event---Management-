@@ -35,9 +35,30 @@ const registerUser = async (userData) => {
 // User Login
 const loginUser = async (loginData) => {
   const response = await apiClient.post('/user/login', loginData);
-   if(response.data.token){
+  if(response.data.token){
     localStorage.setItem('userToken', response.data.token);
-    localStorage.setItem('userInfo', JSON.stringify(response.data.user));
+    localStorage.setItem('userRole', response.data.role);
+    localStorage.setItem('userInfo', JSON.stringify({
+      index: response.data.index,
+      name: response.data.name,
+      email: response.data.email,
+      role: response.data.role
+    }));
+  }
+  return response.data;
+};
+
+// Society Login
+const loginSociety = async (loginData) => {
+  const response = await apiClient.post('/society/login', loginData);
+  if(response.data.token){
+    localStorage.setItem('userToken', response.data.token);
+    localStorage.setItem('userRole', response.data.role);
+    localStorage.setItem('userInfo', JSON.stringify({
+      username: response.data.index,
+      name: response.data.name,
+      role: response.data.role
+    }));
   }
   return response.data;
 };
@@ -58,10 +79,37 @@ const isAuthenticated = () => {
   return localStorage.getItem('userToken') !== null;
 }
 
+//society service
+//create society
+const createSociety = async (societyData) => {
+  const response = await apiClient.post('/society', societyData);
+  return response.data;
+};
+
+// Get User Role
+const getUserRole = () => {
+  return localStorage.getItem('userRole');
+}
+
+// Check if Admin
+const isAdmin = () => {
+  return getUserRole() === 'ADMIN';
+}
+
+// Check if Society
+const isSociety = () => {
+  return getUserRole() === 'SOCIETY';
+}
+
 export default {
   registerUser,
   loginUser,
+  loginSociety,
   Logout,
   getCurrentUser,
-  isAuthenticated
+  isAuthenticated,
+  createSociety,
+  getUserRole,
+  isAdmin,
+  isSociety
 };

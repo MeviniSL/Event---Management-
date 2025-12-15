@@ -22,13 +22,16 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
+        
         <Route path="/society" element={<ProtectedRoute><Society /></ProtectedRoute>} />
-        <Route path="/profile-details" element={<ProtectedRoute><ProfileDetails /></ProtectedRoute>} />
-        <Route path="/event-history" element={<ProtectedRoute><EventHistory /></ProtectedRoute>} />
-        <Route path="/add-event" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
-        <Route path="/edit-event" element={<ProtectedRoute><EditEVent /></ProtectedRoute>} />
-        <Route path="/admin" element={<ProtectedRoute><AdminDashBoard /></ProtectedRoute>} />
+         {/* Society Routes */}
+        <Route path="/profile-details" element={<ProtectedRoute requiredRole="SOCIETY"><ProfileDetails /></ProtectedRoute>} />
+        <Route path="/event-history" element={<ProtectedRoute requiredRole="SOCIETY"><EventHistory /></ProtectedRoute>} />
+        <Route path="/add-event" element={<ProtectedRoute requiredRole="SOCIETY"><AddEvent /></ProtectedRoute>} />
+        <Route path="/edit-event" element={<ProtectedRoute requiredRole="SOCIETY"><EditEVent /></ProtectedRoute>} />
+        
+        {/* Admin Route */}
+        <Route path="/admin" element={<ProtectedRoute requiredRole="ADMIN"><AdminDashBoard /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   </>

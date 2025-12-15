@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import UserService from '../../services/UserService'
+import SocietyService from '../../services/UserService'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
@@ -7,6 +8,7 @@ export default function Login() {
         index: '',
         password: '',
     })
+    const [loginType, setLoginType] = useState('USER') // Default to USER
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -26,18 +28,61 @@ export default function Login() {
             password: form.password
         }
 
-        UserService.loginUser(loginData)
-            .then((data) => {
-                console.log('Login successful:', data)
+        console.log('Sending login data:', loginData, 'Type:', loginType)
+
+        // Choose service based on login type
+        const loginService = loginType === 'SOCIETY' 
+            ? SocietyService.loginSociety(loginData)
+            : UserService.loginUser(loginData)
+
+        loginService
+            .then((response) => {
+                console.log('Login response:', response)
+                const data = response.data || response
+
                 if (data.token) {
-                    navigate('/') 
+                    // Store data in localStorage
+                    localStorage.setItem('token', data.token)
+                    localStorage.setItem('indexNumber', data.indexNumber || data.username)
+                    localStorage.setItem('name', data.name)
+                    localStorage.setItem('email', data.email || '')
+                    localStorage.setItem('role', data.role)
+                    localStorage.setItem('loginType', loginType)
+
+                    console.log('Stored in localStorage:', {
+                        token: data.token,
+                        indexNumber: data.indexNumber || data.username,
+                        name: data.name,
+                        role: data.role,
+                        loginType: loginType
+                    })
+
+                    alert(`Welcome back, ${data.name}!`)
+
+                    // Redirect based on role
+                    if (data.role === 'ADMIN') {
+                        navigate('/admin')
+                    } else if (data.role === 'SOCIETY') {
+                        navigate('/profile-details')
+                    } else {
+                        navigate('/')
+                    }
                 } else {
-                    setError(data.message || 'Login failed')
+                    console.error('No token in response:', data)
+                    setError(data.message || 'Login failed - No token received')
                 }
             })
             .catch((error) => {
                 console.error('Login failed:', error)
-                setError(error.response?.data?.message || 'Invalid credentials')
+                console.error('Error response:', error.response)
+                console.error('Error data:', error.response?.data)
+                
+                const errorMessage = error.response?.data?.message || 
+                                   error.response?.data || 
+                                   error.message || 
+                                   'Invalid credentials'
+                
+                setError(errorMessage)
             })
             .finally(() => {
                 setLoading(false)
@@ -56,21 +101,53 @@ export default function Login() {
                         </p>
 
                         {error && (
-                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm">
                                 {error}
                             </div>
                         )}
 
                         <form onSubmit={handleSubmit} className="space-y-4">
+                            {/* Login Type Radio Buttons */}
+                            <div className="flex gap-6 justify-center mb-4">
+                                {/* User */}
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="loginType"
+                                        value="USER"
+                                        className="accent-blue-600"
+                                        checked={loginType === "USER"}
+                                        onChange={(e) => setLoginType(e.target.value)}
+                                    />
+                                    <span className="text-sm text-gray-700">User</span>
+                                </label>
+
+                                {/* Society */}
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="loginType"
+                                        value="SOCIETY"
+                                        className="accent-blue-600"
+                                        checked={loginType === "SOCIETY"}
+                                        onChange={(e) => setLoginType(e.target.value)}
+                                    />
+                                    <span className="text-sm text-gray-700">Society</span>
+                                </label>
+                            </div>
+                            
                             <div>
-                                <label className="sr-only">Index Number</label>
+                                <label className="sr-only">
+                                    {loginType === 'SOCIETY' ? 'Username' : 'Index Number'}
+                                </label>
                                 <input
                                     name="index"
                                     value={form.index}
                                     onChange={handleChange}
-                                    placeholder="Enter Index Number"
+                                    placeholder={loginType === 'SOCIETY' ? 'Enter Username' : 'Enter Index Number'}
                                     required
-                                    className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-8 py-4 focus:outline-none focus:ring-2 focus:ring-[#0570c4]"
+                                    disabled={loading}
+                                    className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-8 py-4 focus:outline-none focus:ring-2 focus:ring-[#0570c4] disabled:opacity-50"
                                 />
                             </div>
 
@@ -84,7 +161,8 @@ export default function Login() {
                                     placeholder="Enter Password"
                                     required
                                     minLength="6"
-                                    className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-8 py-4 focus:outline-none focus:ring-2 focus:ring-[#0570c4] mt-4"
+                                    disabled={loading}
+                                    className="w-full bg-gray-200 placeholder-gray-600 rounded-full px-8 py-4 focus:outline-none focus:ring-2 focus:ring-[#0570c4] mt-4 disabled:opacity-50"
                                 />
                             </div>
 
@@ -114,14 +192,18 @@ export default function Login() {
                         <p className="mb-6 text-sm opacity-90">
                             To keep connected with us and manage society events, Please login with your details.
                         </p>
-                        <p className="mb-8 text-xs opacity-80">If you haven't an account, Please register your society!</p>
+                        <p className="mb-8 text-xs opacity-80">
+                            {loginType === 'SOCIETY' 
+                                ? "If you haven't an account, Please register your society!" 
+                                : "If you haven't an account, Please register!"}
+                        </p>
 
-                        <a
-                            href="/register"
+                        <button
+                            onClick={() => navigate('/register')}
                             className="inline-block px-10 py-3 rounded-full border-2 border-white hover:bg-white hover:text-teal-600 transition-colors text-sm"
                         >
                             Register
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

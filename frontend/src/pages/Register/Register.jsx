@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react'
 import UserService from '../../services/UserService'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
+	const navigate = useNavigate()
 	const [form, setForm] = useState({
-		name: '',
 		indexNumber: '',
+		name: '',
 		email: '',
 		contact: '',
 		password: '',
@@ -27,7 +29,7 @@ export default function Register() {
 
         // Map frontend field names to backend field names
         const userData = {
-            index: form.indexNumber,  // Map indexNumber to index
+            indexNumber: form.indexNumber,  // Map indexNumber to index
             name: form.name,
             email: form.email,
             contact: parseInt(form.contact),  // Convert to number
@@ -38,8 +40,7 @@ export default function Register() {
         .then((data) => {
             console.log('Registration successful:', data)
             alert('Registration successful!')
-            // Redirect to login page
-            window.location.href = '/login'
+            navigate('/login')
         })
         .catch((error) => {
             console.error('Registration failed:', error)
