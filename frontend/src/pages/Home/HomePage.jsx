@@ -1,28 +1,33 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
-import { AGM, HomeHero, IEEELogo, ServiceBg } from '../../assets/assets'
+import { AGM, HomeHero, IEEELogo, partner1, partner2, partner3, partner4, partner5, partner6, partner7, partner8, ServiceBg } from '../../assets/assets'
+import Marquee from "react-fast-marquee";
 
 
 function HomePage() {
+
+  const marqueeImgs = [
+    partner1, partner2, partner3, partner4, partner5, partner6,partner7, partner8
+  ];
   return (
-    <div class="w-full h-full m-0 p-0 bg-white overflow-x-hidden">
+    <div id="home" class="w-full h-full m-0 p-0 bg-white overflow-x-hidden">
        <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />
       </div>
 
-      <div id="home" className="flex-col justify-center items-center home-container h-full mt-16">
+      <div  className="flex-col justify-center items-center home-container h-full mt-16">
       
       <section class="text-gray-600 body-font ">
   <div class="container mx-auto flex px-5 py-20 md:flex-row  flex-col items-center">
     <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-      <h1 class="title-font max-sm:text-[28px] text-4xl mb-3 font-bold text-[#0570c4]">Empowering University Events with AI
+      <h1 class="title-font max-sm:text-[28px] text-4xl mb-3 font-bold text-[#0570c4]">Empowering Organization's Events with AI
       </h1>
       <h2 className="title-font max-sm:text-[18px] text-2xl mb-3 font-medium text-[#3baaf5]">Manage, promote and analyze your society events in one smart platform.</h2>
       <p class="mb-8  leading-relaxed">Manage, promote and analyze university events all in one place with Esyventra. The platform automates scheduling, approval and promotion using AI-driven caption and flyer generation that helping societies save time and boost participation.</p>
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-[#0570c4] border-0 py-2 px-6 focus:outline-none hover:bg-[#05599f] rounded text-lg">Events</button>
-        <button class="ml-4 inline-flex text-white bg-[#3baaf5]  py-2 px-6 focus:outline-none hover:bg-[#0570c4] rounded text-lg">Societies</button>
+        <button class="inline-flex text-white bg-[#0570c4] border-0 py-2 px-6 focus:outline-none hover:bg-[#05599f] rounded text-lg" onClick={() => window.location.href="#event"}>Events</button>
+        <button class="ml-4 inline-flex text-white bg-[#3baaf5]  py-2 px-6 focus:outline-none hover:bg-[#0570c4] rounded text-lg" onClick={() => window.location.href="#society"}>Societies</button>
       </div>
 
       
@@ -35,20 +40,20 @@ function HomePage() {
 
 
 <section className="text-gray-600 body-font p-0">
-  <div className="w-full flex px-5 py-0 mx-auto justify-center items-center flex-wrap gap-20">
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
-    <div className="s1 w-40 h-40 bg-gray-300"></div>
+  <div className="w-full">
+    <Marquee autoFill gradient gradientWidth={100} speed={50} className="py-4 bg-gray-100">
+    {marqueeImgs.map((imgSrc, index) => (
+      <div key={index} className="mx-10 flex items-center">
+        <img src={imgSrc} alt={`Partner ${index + 1}`} className="h-20 object-contain" />
+      </div>
+    ))}
+    </Marquee>
   </div>
 </section>
 
 
-<section id='event' class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
+<section id='event' class="text-gray-600 body-font h-full py-2">
+  <div class="container px-5 py-28 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
        <h1 className="sm:text-3xl md:text-4xl lg:text-[46px] text-[56px] font-bold mb-2 text-[#0570c4]">
